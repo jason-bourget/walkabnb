@@ -17,12 +17,18 @@ const normal = {
   rating: '._17erhr0e ._vy3ibx ._l0ao8q div div',
   reviews: '._17erhr0e ._vy3ibx ._l0ao8q div div',
   map: '[href*="maps?"]'
-}
+};
 
-puppeteer.launch().then(async browser => {
+(async () => {
+  // Set up browser and page.
+  const browser = await puppeteer.launch({
+    headless: false,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  });
 
-  /* Navigates a headless browser to the airbnb home page */
   const page = await browser.newPage();
+  page.setViewport({ width: 1280, height: 926 });
+
   await page.goto('https://www.airbnb.com/', { waitUntil : ['load', 'domcontentloaded']});
 
   /* Enters the search input, clicks the search button, and waits... */
@@ -39,21 +45,22 @@ puppeteer.launch().then(async browser => {
     return Array.from(document.querySelectorAll("._fhph4u [id*=listing]")).map(node => node.id.split('-')[1]);
   });
 
-  const listing = listings[2];
+  /* Navigate to a listing */
+  const listing = listings[3];
   const url = baseUrl + listing;
   await page.goto(url, { waitUntil : ['load', 'domcontentloaded']});
+
+  /* Is it a plus listing or a normal listing? */
   const type = page.url().includes('plus') ? plus : normal;
+  await page.evaluate('window.scrollTo(0, document.body.scrollHeight)');
+  await page.waitForSelector(type.map);
 
-  await page.screenshot({path: 'beforeScroll.png'});
-  // await page.evaluate('window.scrollTo({top: 7000, left: 0, behavior: "smooth"})');
-  // await page.screenshot({path: 'afterScroll.png'});
-
-  const title = await page.evaluate(async (type) => {
-    await window.scrollTo(0, document.body.scrollHeight);
+  const title = await page.evaluate((type) => {
+    console.log('checking for map');
     return document.querySelector(type.map).href;
   }, type);
 
   console.log(title);
 
   await browser.close();
-});
+})();
