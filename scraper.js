@@ -1,26 +1,11 @@
 const puppeteer = require('puppeteer');
 const baseUrl = 'https://www.airbnb.com/rooms/';
-
-const plus = {
-  price: '_dbebypz ._18ilrswp span',
-  title: 'span._h9r8c93',
-  size: '._j0jilw ._g86r3e ._tw4pe52',
-  rating: 'button span._rs3rozr',
-  reviews: 'button span._1m8bb6v',
-  map: '[href*="maps?"]'
-}
-
-const normal = {
-  price: '._doc79r',
-  title: 'h1 ._18hrqvin',
-  size: '._n5lh69r ._36rlri ._czm8crp',
-  rating: '._17erhr0e ._vy3ibx ._l0ao8q div div',
-  reviews: '._17erhr0e ._vy3ibx ._l0ao8q div div',
-  map: '[href*="maps?"]'
-};
+const { getListingInfo, plus, normal } = require('./scraperHelpers.js');
 
 (async () => {
-  // Set up browser and page.
+
+  /* Instantiate a browser, headless or otherwise.
+  Setting headless to false is a great way to debug! */
   const browser = await puppeteer.launch({
     headless: false,
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
@@ -40,27 +25,33 @@ const normal = {
   await page.click(searchButton);
   await page.waitForNavigation({ waitUntil : ['load', 'domcontentloaded']});
 
-  /* Gets all listing IDs on the page */
+  /* Gets all listing IDs on the page. */
   const listings = await page.evaluate(() => {
     return Array.from(document.querySelectorAll("._fhph4u [id*=listing]")).map(node => node.id.split('-')[1]);
   });
 
-  /* Navigate to a listing */
-  const listing = listings[3];
-  const url = baseUrl + listing;
-  await page.goto(url, { waitUntil : ['load', 'domcontentloaded']});
+  const results = [];
 
-  /* Is it a plus listing or a normal listing? */
-  const type = page.url().includes('plus') ? plus : normal;
-  await page.evaluate('window.scrollTo(0, document.body.scrollHeight)');
-  await page.waitForSelector(type.map);
+  /* Loop through listings and store their details to a results array. */
+  for (let i = 0; i < listings.length; i ++) {
+    /* Navigate to a listing. */
+    const url = baseUrl + listings[i];
+    await page.goto(url, { waitUntil : ['load', 'domcontentloaded']});
 
-  const title = await page.evaluate((type) => {
-    console.log('checking for map');
-    return document.querySelector(type.map).href;
-  }, type);
+    /* Is it a plus listing or a normal listing? */
+    const type = page.url().includes('plus') ? plus : normal;
 
-  console.log(title);
+    /* Scroll and wait for map to load. */
+    await page.evaluate('window.scrollTo(0, document.body.scrollHeight)');
+    await page.waitForSelector(type.map);
 
+    /* Scrape the listing! */
+    const listingInfo = await getListingInfo(page, type);
+
+    console.log(listingInfo);
+    results.push(listingInfo);
+  }
+  console.log(results);
   await browser.close();
+  
 })();
