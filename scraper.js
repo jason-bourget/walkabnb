@@ -18,7 +18,8 @@ const { getListingInfo, plus, normal } = require('./scraperHelpers.js');
 
   /* Enters the search input, clicks the search button, and waits... */
   const searchInput = 'div ._up0kwni';
-  await page.type(searchInput, "denver homes");
+  await page.type(searchInput, "san francisco homes");
+  await page.screenshot({path: 'query.png'});
   await page.keyboard.press('Enter');
   const searchButton = 'button ._ftj2sg4'
   await page.click(searchButton);
