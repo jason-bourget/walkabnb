@@ -2,13 +2,12 @@ const puppeteer = require('puppeteer');
 const baseUrl = 'https://www.airbnb.com/rooms/';
 const { getListingInfo, plus, normal } = require('./scraperHelpers.js');
 
-(async () => {
+exports.scraper = async (city) => {
 
   /* Instantiate a browser, headless or otherwise.
   Setting headless to false is a great way to debug! */
   const browser = await puppeteer.launch({
-    headless: false,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--lang=en-US'],
   });
 
   const page = await browser.newPage();
@@ -18,7 +17,7 @@ const { getListingInfo, plus, normal } = require('./scraperHelpers.js');
 
   /* Enters the search input, clicks the search button, and waits... */
   const searchInput = 'div ._up0kwni';
-  await page.type(searchInput, "san francisco homes");
+  await page.type(searchInput, `${city} homes`);
   await page.screenshot({path: 'query.png'});
   await page.keyboard.press('Enter');
   const searchButton = 'button ._ftj2sg4'
@@ -48,10 +47,13 @@ const { getListingInfo, plus, normal } = require('./scraperHelpers.js');
     /* Scrape the listing! */
     const listingInfo = await getListingInfo(page, type);
 
+    /* Add the url and Airbnb ID to the listingInfo object. */
+    listingInfo.url = url;
+    listingInfo.airbnbId = parseInt(listings[i]);
+
     console.log(listingInfo);
     results.push(listingInfo);
-  }
-  console.log(results);
+  };
   await browser.close();
-  
-})();
+  return results;
+};
