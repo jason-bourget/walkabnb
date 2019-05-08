@@ -10,6 +10,8 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 const styles = theme => ({
   card: {
@@ -61,11 +63,27 @@ class Listing extends React.Component {
           title="Listing Image"
         />
         <CardContent>
-          <Typography component="p">
-            {rating} out of 5 stars based on {reviews} reviews
-            {size.map(metric => <div>{metric}</div>)}
-            $99/night
-          </Typography>
+          <Grid container className={classes.demo} justify="space-evenly">
+            {size.map(value => (
+              <Grid key={value} item>
+                <Typography component="p">
+                  {value}
+                </Typography>
+              </Grid>
+            ))}
+          </Grid>
+          <Grid container className={classes.demo} justify="space-evenly">
+            <Grid item>
+              <Typography component="p">
+                {rating} out of 5 stars based on {reviews} reviews
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography component="p">
+                $99/night
+              </Typography>
+            </Grid>
+          </Grid>
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
           <IconButton aria-label="Add to favorites">
