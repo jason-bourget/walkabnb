@@ -1,8 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import Search from './Search.jsx';
 import Listings from './Listings.jsx';
-import Button from '@material-ui/core/Button';
+import Title from './Title.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,10 +9,9 @@ class App extends React.Component {
     this.state = {
       listings: []
     }
-    this.getListings = this.getListings.bind(this);
   }
 
-  async getListings(city) {
+  getListings = async (city) => {
     const { data } = await axios.get('/api/listings', { params: { city } });
     this.setState({ listings: data });
   };
@@ -21,7 +19,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Search getListings={this.getListings}/>
+        <Title getListings={this.getListings}/>
         <Listings listings={this.state.listings}/>
       </div>
     )
