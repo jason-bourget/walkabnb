@@ -1,7 +1,8 @@
+require('dotenv').config()
+const port = process.env.PORT || 3000;
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const port = 3000;
 const { getListings } = require('./controllers/index.js');
 
 app.use(bodyParser.json());

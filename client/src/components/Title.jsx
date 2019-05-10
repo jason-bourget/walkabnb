@@ -8,10 +8,12 @@ import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import blue from '@material-ui/core/colors/blue';
+
 
 const styles = theme => ({
   root: {
-    width: '100%',
+    width: '100%'
   },
   grow: {
     flexGrow: 1,
@@ -98,7 +100,7 @@ class Title extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar style={{ position: "fixed"}}>
+        <AppBar style={{ position: "fixed", backgroundColor: blue[900]}}>
           <Toolbar>
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
               walkabnb
