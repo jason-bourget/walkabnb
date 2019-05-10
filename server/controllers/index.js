@@ -1,9 +1,8 @@
 const Listing = require('../models/index.js');
 const sequelize = require('../db/index.js');
 
-exports.createListings = async (listings) => {
-  await Listing.bulkCreate(listings);
-  await sequelize.close();
+exports.createOrUpdate = async (listing) => {
+  return Listing.upsert(listing);
 };
 
 exports.getListings = async (city) => {

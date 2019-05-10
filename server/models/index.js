@@ -3,7 +3,8 @@ const sequelize = require('../db/index.js');
 
 const Listing = sequelize.define('listing', {
   airbnbId: {
-    type: Sequelize.INTEGER
+    type: Sequelize.INTEGER,
+    unique: true
   },
   title: {
     type: Sequelize.STRING
