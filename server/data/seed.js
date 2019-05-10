@@ -11,4 +11,4 @@ const seed = async (city) => {
   }
 }
 
-seed('santa fe');
+seed('denver');

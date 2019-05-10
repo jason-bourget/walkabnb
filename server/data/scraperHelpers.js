@@ -7,7 +7,7 @@ exports.plus = {
   rating: 'button span._rs3rozr',
   reviews: 'button span._1m8bb6v',
   map: '[href*="maps?"]',
-  image: '._a5xa5nk ._h92vd7'
+  image: '._kncdib ._wf3n21'
 }
 
 exports.normal = {
@@ -44,15 +44,21 @@ exports.getListingInfo = async function(page, type) {
     const rating = parseFloat(document.querySelector(type.rating).attributes[1].textContent.split(' ')[1]) || 5;
 
     const image = (() => {
-      if (type.listing === 'plus') {
-        let url = document.querySelector(type.image).attributes[1].value;
-        let start = url.indexOf('(') + 1;
-        let end = url.indexOf('?');
-        return url.substring(start, end);
+      try {
+        if (type.listing === 'plus') {
+          let url = document.querySelector(type.image).attributes[1].value;
+          let start = url.indexOf('(') + 1;
+          let end = url.indexOf('?');
+          return url.substring(start, end);
+        }
+        if (type.listing === 'normal') {
+          let url = document.querySelectorAll(type.image)[0].src;
+          return url.substring(0, url.indexOf('?'));
+        }
       }
-      if (type.listing === 'normal') {
-        let url = document.querySelectorAll(type.image)[0].src;
-        return url.substring(0, url.indexOf('?'));
+      catch(err) {
+        console.log(err);
+        return '';
       }
     })();
 

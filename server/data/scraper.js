@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
 const baseUrl = 'https://www.airbnb.com/rooms/';
 const { getListingInfo, plus, normal } = require('./scraperHelpers.js');
+const { getWalkScore } = require('./utilities.js');
 
 module.exports = async (city) => {
 
@@ -34,6 +35,8 @@ module.exports = async (city) => {
 
   /* Loop through listings and store their details to a results array. */
   for (let i = 0; i < listings.length; i ++) {
+    // let mapErr = false;
+
     /* Navigate to a listing. */
     const url = baseUrl + listings[i];
     await page.goto(url);
@@ -43,22 +46,36 @@ module.exports = async (city) => {
 
     /* Scroll and wait for map to load. */
     await page.evaluate('window.scrollTo(0, document.body.scrollHeight)');
-    await page.waitForSelector(type.map);
+
+    /* If the map never loads, this listing is USELESS to me.
+    Useless I say. So skip it. */
+    try {
+      await page.waitForSelector(type.map);
+    }
+    catch(err) {
+      continue;
+    }
 
     /* Scrape the listing! */
-    const listingInfo = await getListingInfo(page, type);
+    const listing = await getListingInfo(page, type);
+
+    /* If the image wasn't accessible in the HTML,
+    skip this listing. */
+    if(listing.image === '') {
+      continue;
+    }
+
+    /* Get the listing's walkscore, based on lat & long */
+    const walkscore = await getWalkScore(listing);
 
     /* Add the url, Airbnb ID, and city to the scraped object. */
-    listingInfo.url = url;
-    listingInfo.airbnbId = parseInt(listings[i]);
-    listingInfo.city = city;
+    listing.walkscore = walkscore;
+    listing.url = url;
+    listing.airbnbId = parseInt(listings[i]);
+    listing.city = city;
 
-    /* Until we get the walkscsore API working, this picks
-    a random number between 50 and 100. */
-    listingInfo.walkscore = Math.floor(Math.random() * 50) + 50;
-
-    console.log(listingInfo);
-    results.push(listingInfo);
+    console.log(listing);
+    results.push(listing);
   };
   await browser.close();
   return results;
