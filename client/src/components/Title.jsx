@@ -106,29 +106,14 @@ class Title extends React.Component {
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
               walkabnb
             </Typography>
-            <div className={classes.search} style={{width: '300px'}}>
-              <div className={classes.searchIcon}>
-                <SearchIcon/>
-              </div>
-              <AutoSuggest>
-                <InputBase
-                  placeholder="Where ya headed?"
-                  value={this.state.city}
-                  onChange={this.handleChange}
-                  classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput,
-                  }}
-                  />
-              </AutoSuggest>
-            </div>
-              <Button
-                variant="contained"
-                className={classes.button}
-                onClick={this.handleSubmit}
-              >
-                Search
-              </Button>
+            <AutoSuggest/>
+            <Button
+              variant="contained"
+              className={classes.button}
+              onClick={this.handleSubmit}
+            >
+              Search
+            </Button>
           </Toolbar>
         </AppBar>
       </div>
