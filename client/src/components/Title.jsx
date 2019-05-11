@@ -9,6 +9,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import blue from '@material-ui/core/colors/blue';
+import AutoSuggest from './AutoSuggest.jsx';
 
 
 const styles = theme => ({
@@ -105,19 +106,21 @@ class Title extends React.Component {
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
               walkabnb
             </Typography>
-            <div className={classes.search}>
+            <div className={classes.search} style={{width: '300px'}}>
               <div className={classes.searchIcon}>
                 <SearchIcon/>
               </div>
-              <InputBase
-                placeholder="Where ya headed?"
-                value={this.state.city}
-                onChange={this.handleChange}
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-              />
+              <AutoSuggest>
+                <InputBase
+                  placeholder="Where ya headed?"
+                  value={this.state.city}
+                  onChange={this.handleChange}
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput,
+                  }}
+                  />
+              </AutoSuggest>
             </div>
               <Button
                 variant="contained"

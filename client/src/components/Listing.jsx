@@ -21,13 +21,10 @@ const styles = theme => ({
   },
   media: {
     height: 0,
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '56.25%',
   },
   actions: {
     display: 'flex',
-  },
-  avatar: {
-    backgroundColor: red[500],
   }
 });
 
@@ -35,7 +32,8 @@ class Listing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      raised: false
+      raised: false,
+      shade: 0
     }
   }
 
@@ -51,6 +49,16 @@ class Listing extends React.Component {
     this.setState(state => ({ expanded: !state.expanded }));
   }
 
+  generateColor = (walkscore) => {
+    if (walkscore > 50) {
+      const shade = Math.round((((walkscore - 50) / 50 * 700) + 200 ) / 100) * 100;
+      console.log(shade);
+      return blue[shade];
+    }
+    const shade = Math.round((900 - (walkscore / 50 * 700 )) / 100) * 100;
+    console.log(shade);
+    return red[shade]; }
+
   render() {
     const { classes } = this.props;
     const { title, url, walkscore, size, reviews, rating, image, city, price } = this.props.listing;
@@ -58,7 +66,7 @@ class Listing extends React.Component {
       <Card className={classes.card} raised={this.state.raised} onMouseOver={this.mouseOver} onMouseLeave={this.mouseLeave}>
         <CardHeader
           avatar={
-            <Avatar aria-label="Walkscore" className={classes.avatar}>
+            <Avatar aria-label="Walkscore" style={{backgroundColor: this.generateColor(walkscore)}}>
               {walkscore}
             </Avatar>
           }
