@@ -32,6 +32,9 @@ const Listing = sequelize.define('listing', {
   },
   city: {
     type: Sequelize.STRING
+  },
+  price: {
+    type: Sequelize.INTEGER
   }
 }, {
   underscored: true

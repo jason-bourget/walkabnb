@@ -7,7 +7,7 @@ import logo from '../assets/logo.png';
 const Listings = ({ listings }) => {
   if (listings.length > 0) {
     return (
-      <GridList cols={3} cellHeight={550} style={{position: 'absolute', top: '75px'}}>
+      <GridList cols={3} cellHeight={500} style={{position: 'absolute', top: '75px'}}>
         {listings.map((listing, index) => {
           return (
             <GridListTile key={index}>

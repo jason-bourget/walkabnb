@@ -16,7 +16,8 @@ import Grid from '@material-ui/core/Grid';
 const styles = theme => ({
   card: {
     maxWidth: 550,
-    margin: 10
+    margin: 10,
+    backgroundColor: '#F8F8F8'
   },
   media: {
     height: 0,
@@ -27,18 +28,23 @@ const styles = theme => ({
   },
   avatar: {
     backgroundColor: red[500],
-  },
-  content: {
-    backgroundColor: blue[500],
-  },
+  }
 });
 
 class Listing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: false
+      raised: false
     }
+  }
+
+  mouseOver = () => {
+    this.setState({raised: true});
+  }
+
+  mouseLeave = () => {
+    this.setState({raised: false});
   }
 
   handleExpandClick = () => {
@@ -47,10 +53,9 @@ class Listing extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { title, url, walkscore, size, reviews, rating, image, city} = this.props.listing;
-    console.log(title);
+    const { title, url, walkscore, size, reviews, rating, image, city, price } = this.props.listing;
     return (
-      <Card className={classes.card}>
+      <Card className={classes.card} raised={this.state.raised} onMouseOver={this.mouseOver} onMouseLeave={this.mouseLeave}>
         <CardHeader
           avatar={
             <Avatar aria-label="Walkscore" className={classes.avatar}>
@@ -60,12 +65,14 @@ class Listing extends React.Component {
           title={title}
           subheader={city}
         />
-        <CardMedia
-          className={classes.media}
-          image={image}
-          title="Listing Image"
-        />
-        <CardContent className={classes.content}>
+        <a href={url} target="_blank">
+          <CardMedia
+            className={classes.media}
+            image={image}
+            title="Listing Image"
+          />
+        </a>
+        <CardContent style={{backgroundColor: blue[500]}}>
           <Grid container justify="space-evenly">
             {size.map(value => (
               <Grid key={value} item>
@@ -75,24 +82,26 @@ class Listing extends React.Component {
               </Grid>
             ))}
           </Grid>
-          {/* <Grid container justify="space-evenly">
-            <Grid item>
-              <Typography component="p">
-                {rating} out of 5 stars based on {reviews} reviews
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography component="p">
-                $99/night
-              </Typography>
-            </Grid>
-          </Grid> */}
         </CardContent>
-        <CardActions className={classes.actions} disableActionSpacing>
-          <IconButton aria-label="Add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-        </CardActions>
+        <CardContent style={{paddingBottom: '16px', backgroundColor: '#F8F8F8'}}>
+          <Grid container justify="space-evenly">
+          <Grid item>
+              <Typography component="div" variant="subtitle2">
+                ${price}/night
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography component="div" variant="subtitle2">
+                Rating: {rating}/5
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography component="div" variant="subtitle2">
+                {reviews} reviews
+              </Typography>
+            </Grid>
+          </Grid>
+          </CardContent>
       </Card>
     )
   }

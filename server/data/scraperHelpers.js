@@ -14,7 +14,7 @@ exports.normal = {
   listing: 'normal',
   price: '._doc79r',
   title: '[property*="og:title"]',
-  size: '._n5lh69r ._36rlri ._czm8crp',
+  size: '._36rlri ._36rlri ._czm8crp',
   rating: 'button span._rs3rozr',
   reviews: '._17erhr0e ._vy3ibx ._l0ao8q div div',
   map: '[href*="maps?"]',
@@ -70,6 +70,8 @@ exports.getListingInfo = async function(page, type) {
         return parseInt(document.querySelectorAll(type.reviews)[1].attributes[2].value);
       }
     })();
+
+    console.log(size);
 
     size.splice(4);
 

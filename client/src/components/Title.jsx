@@ -126,7 +126,6 @@ class Title extends React.Component {
               >
                 Search
               </Button>
-              <FavoriteIcon style={{position: 'absolute', right: '50px'}}/>
           </Toolbar>
         </AppBar>
       </div>
