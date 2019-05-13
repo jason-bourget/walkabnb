@@ -7,8 +7,45 @@ import parse from 'autosuggest-highlight/parse';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
-import Popper from '@material-ui/core/Popper';
+import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  root: {
+    height: 75,
+    flexGrow: 1
+  },
+  container: {
+    position: 'relative',
+    left: 20,
+    top: 10,
+    width: 300,
+    float: 'left'
+  },
+  suggestionsContainerOpen: {
+    position: 'absolute',
+    zIndex: 1,
+    marginTop: theme.spacing.unit,
+    left: 0,
+    right: 0,
+  },
+  suggestion: {
+    display: 'block',
+  },
+  suggestionsList: {
+    margin: 0,
+    padding: 0,
+    listStyleType: 'none',
+  },
+  button: {
+    margin: 0,
+    position: 'relative',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    left: '30px'
+  },
+
+});
 
 function renderInputComponent(inputProps) {
   const { classes, inputRef = () => {}, ref, ...other } = inputProps;
@@ -62,39 +99,6 @@ function getSuggestionValue(suggestion) {
   return suggestion;
 }
 
-const styles = theme => ({
-  root: {
-    height: 75,
-    flexGrow: 1,
-    width: 300
-  },
-  container: {
-    position: 'relative',
-    left: 20,
-    top: 10,
-    width: 300,
-  },
-  suggestionsContainerOpen: {
-    position: 'absolute',
-    zIndex: 1,
-    marginTop: theme.spacing.unit,
-    left: 0,
-    right: 0,
-  },
-  suggestion: {
-    display: 'block',
-  },
-  suggestionsList: {
-    margin: 0,
-    padding: 0,
-    listStyleType: 'none',
-  },
-  divider: {
-    height: theme.spacing.unit * 2,
-  }
-
-});
-
 class AutoSuggest extends React.Component {
   constructor(props) {
     super(props);
@@ -142,7 +146,12 @@ class AutoSuggest extends React.Component {
     this.setState({
       [name]: newValue,
     });
-    this.props.handleChange(event);
+  };
+
+  handleSubmit = (event) => {
+    this.props.getListings(this.state.single);
+    this.setState({ single: '' });
+    event.preventDefault();
   };
 
   render() {
@@ -179,6 +188,13 @@ class AutoSuggest extends React.Component {
             </Paper>
           )}
         />
+        <Button
+          variant="contained"
+          className={classes.button}
+          onClick={this.handleSubmit}
+        >
+          Search
+        </Button>
       </div>
     );
   }
