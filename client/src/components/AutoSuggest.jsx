@@ -10,43 +10,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Popper from '@material-ui/core/Popper';
 import { withStyles } from '@material-ui/core/styles';
 
-const suggestions = [
-  { label: 'Afghanistan' },
-  { label: 'Aland Islands' },
-  { label: 'Albania' },
-  { label: 'Algeria' },
-  { label: 'American Samoa' },
-  { label: 'Andorra' },
-  { label: 'Angola' },
-  { label: 'Anguilla' },
-  { label: 'Antarctica' },
-  { label: 'Antigua and Barbuda' },
-  { label: 'Argentina' },
-  { label: 'Armenia' },
-  { label: 'Aruba' },
-  { label: 'Australia' },
-  { label: 'Austria' },
-  { label: 'Azerbaijan' },
-  { label: 'Bahamas' },
-  { label: 'Bahrain' },
-  { label: 'Bangladesh' },
-  { label: 'Barbados' },
-  { label: 'Belarus' },
-  { label: 'Belgium' },
-  { label: 'Belize' },
-  { label: 'Benin' },
-  { label: 'Bermuda' },
-  { label: 'Bhutan' },
-  { label: 'Bolivia, Plurinational State of' },
-  { label: 'Bonaire, Sint Eustatius and Saba' },
-  { label: 'Bosnia and Herzegovina' },
-  { label: 'Botswana' },
-  { label: 'Bouvet Island' },
-  { label: 'Brazil' },
-  { label: 'British Indian Ocean Territory' },
-  { label: 'Brunei Darussalam' },
-];
-
 function renderInputComponent(inputProps) {
   const { classes, inputRef = () => {}, ref, ...other } = inputProps;
 
@@ -73,8 +36,8 @@ function renderInputComponent(inputProps) {
 }
 
 function renderSuggestion(suggestion, { query, isHighlighted }) {
-  const matches = match(suggestion.label, query);
-  const parts = parse(suggestion.label, matches);
+  const matches = match(suggestion, query);
+  const parts = parse(suggestion, matches);
 
   return (
     <MenuItem selected={isHighlighted} component="div">
@@ -95,27 +58,8 @@ function renderSuggestion(suggestion, { query, isHighlighted }) {
   );
 }
 
-function getSuggestions(value) {
-  const inputValue = deburr(value.trim()).toLowerCase();
-  const inputLength = inputValue.length;
-  let count = 0;
-
-  return inputLength === 0
-    ? []
-    : suggestions.filter(suggestion => {
-        const keep =
-          count < 5 && suggestion.label.slice(0, inputLength).toLowerCase() === inputValue;
-
-        if (keep) {
-          count += 1;
-        }
-
-        return keep;
-      });
-}
-
 function getSuggestionValue(suggestion) {
-  return suggestion.label;
+  return suggestion;
 }
 
 const styles = theme => ({
@@ -152,15 +96,39 @@ const styles = theme => ({
 });
 
 class AutoSuggest extends React.Component {
-  state = {
-    single: '',
-    popper: '',
-    suggestions: [],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      single: '',
+      popper: '',
+      suggestions: [],
+    };
+  }
+
+  getSuggestions = (value) => {
+    const inputValue = deburr(value.trim()).toLowerCase();
+    const inputLength = inputValue.length;
+    let count = 0;
+
+    console.log(this.props.cities);
+
+    return inputLength === 0
+      ? []
+      : this.props.cities.filter(city => {
+          const keep =
+            count < 5 && city.slice(0, inputLength).toLowerCase() === inputValue;
+
+          if (keep) {
+            count += 1;
+          }
+
+          return keep;
+        });
+  }
 
   handleSuggestionsFetchRequested = ({ value }) => {
     this.setState({
-      suggestions: getSuggestions(value),
+      suggestions: this.getSuggestions(value),
     });
   };
 
@@ -196,7 +164,7 @@ class AutoSuggest extends React.Component {
             classes,
             placeholder: 'Search for a city...',
             value: this.state.single,
-            onChange: this.handleChange('single'),
+            onChange: this.props.handleChange('single'),
           }}
           theme={{
             container: classes.container,

@@ -106,7 +106,7 @@ class Title extends React.Component {
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
               walkabnb
             </Typography>
-            <AutoSuggest/>
+            <AutoSuggest cities={this.props.cities} getListings={this.props.getListings}/>
             <Button
               variant="contained"
               className={classes.button}

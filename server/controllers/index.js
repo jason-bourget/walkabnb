@@ -5,6 +5,11 @@ exports.createOrUpdate = async (listing) => {
   return Listing.upsert(listing);
 };
 
+exports.getCities = async () => {
+  let cities = await Listing.aggregate('city', 'DISTINCT', { plain: false });
+  return cities.map(city => city.DISTINCT);
+}
+
 exports.getListings = async (city) => {
   const listings = await Listing.findAll({
     where: { city },
@@ -12,3 +17,5 @@ exports.getListings = async (city) => {
   });
   return listings.sort()
 };
+
+exports.getCities();
