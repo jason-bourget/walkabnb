@@ -7,7 +7,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      listings: []
+      listings: [],
+      cities: []
     }
   }
 
@@ -16,10 +17,19 @@ class App extends React.Component {
     this.setState({ listings: data });
   };
 
+  getCities = async () => {
+    const { data } = await axios.get('/api/cities');
+    this.setState({ cities: data });
+  }
+
+  componentDidMount() {
+    this.getCities();
+  }
+
   render() {
     return (
       <div>
-        <Title getListings={this.getListings}/>
+        <Title getListings={this.getListings} cities={this.state.cities}/>
         <Listings listings={this.state.listings}/>
       </div>
     )

@@ -9,69 +9,107 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
+import blue from '@material-ui/core/colors/blue';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import Grid from '@material-ui/core/Grid';
 
 const styles = theme => ({
   card: {
     maxWidth: 550,
-    margin: 10
+    margin: 10,
+    backgroundColor: '#F8F8F8'
   },
   media: {
     height: 0,
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '56.25%',
   },
   actions: {
     display: 'flex',
-  },
-  avatar: {
-    backgroundColor: red[500],
-  },
+  }
 });
 
 class Listing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: false
+      raised: false,
+      shade: 0
     }
+  }
+
+  mouseOver = () => {
+    this.setState({raised: true});
+  }
+
+  mouseLeave = () => {
+    this.setState({raised: false});
   }
 
   handleExpandClick = () => {
     this.setState(state => ({ expanded: !state.expanded }));
   }
 
+  generateColor = (walkscore) => {
+    if (walkscore > 50) {
+      const shade = Math.round((((walkscore - 50) / 50 * 700) + 200 ) / 100) * 100;
+      console.log(shade);
+      return blue[shade];
+    }
+    const shade = Math.round((900 - (walkscore / 50 * 700 )) / 100) * 100;
+    console.log(shade);
+    return red[shade]; }
+
   render() {
     const { classes } = this.props;
-    const { title, url, walkscore, size, reviews, rating, image, city} = this.props.listing;
-    console.log(title);
+    const { title, url, walkscore, size, reviews, rating, image, city, price } = this.props.listing;
     return (
-      <Card className={classes.card}>
+      <Card className={classes.card} raised={this.state.raised} onMouseOver={this.mouseOver} onMouseLeave={this.mouseLeave}>
         <CardHeader
           avatar={
-            <Avatar aria-label="Walkscore" className={classes.avatar}>
+            <Avatar aria-label="Walkscore" style={{backgroundColor: this.generateColor(walkscore)}}>
               {walkscore}
             </Avatar>
           }
           title={title}
           subheader={city}
         />
-        <CardMedia
-          className={classes.media}
-          image={image}
-          title="Listing Image"
-        />
-        <CardContent>
-          <Typography component="p">
-            {rating} out of 5 stars based on {reviews} reviews
-            {size.map(metric => <div>{metric}</div>)}
-            $99/night
-          </Typography>
+        <a href={url} target="_blank">
+          <CardMedia
+            className={classes.media}
+            image={image}
+            title="Listing Image"
+          />
+        </a>
+        <CardContent style={{backgroundColor: blue[500]}}>
+          <Grid container justify="space-evenly">
+            {size.map(value => (
+              <Grid key={value} item>
+                <Typography component="div" variant="subtitle2" style={{color: 'white'}}>
+                  {value}
+                </Typography>
+              </Grid>
+            ))}
+          </Grid>
         </CardContent>
-        <CardActions className={classes.actions} disableActionSpacing>
-          <IconButton aria-label="Add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-        </CardActions>
+        <CardContent style={{paddingBottom: '16px', backgroundColor: '#F8F8F8'}}>
+          <Grid container justify="space-evenly">
+          <Grid item>
+              <Typography component="div" variant="subtitle2">
+                ${price}/night
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography component="div" variant="subtitle2">
+                Rating: {rating}/5
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography component="div" variant="subtitle2">
+                {reviews} reviews
+              </Typography>
+            </Grid>
+          </Grid>
+          </CardContent>
       </Card>
     )
   }
