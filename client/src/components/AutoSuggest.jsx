@@ -142,6 +142,7 @@ class AutoSuggest extends React.Component {
     this.setState({
       [name]: newValue,
     });
+    this.props.handleChange(event);
   };
 
   render() {
@@ -164,7 +165,7 @@ class AutoSuggest extends React.Component {
             classes,
             placeholder: 'Search for a city...',
             value: this.state.single,
-            onChange: this.props.handleChange('single'),
+            onChange: this.handleChange('single'),
           }}
           theme={{
             container: classes.container,

@@ -87,7 +87,7 @@ class Title extends React.Component {
   }
 
   handleChange = (event) => {
-    this.setState({city: event.target.value}, console.log(this.state.city))
+    this.setState({city: event.target.value})
   };
 
   handleSubmit = (event) => {
@@ -106,7 +106,7 @@ class Title extends React.Component {
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
               walkabnb
             </Typography>
-            <AutoSuggest cities={this.props.cities} getListings={this.props.getListings}/>
+            <AutoSuggest cities={this.props.cities} handleChange={this.handleChange} />
             <Button
               variant="contained"
               className={classes.button}
