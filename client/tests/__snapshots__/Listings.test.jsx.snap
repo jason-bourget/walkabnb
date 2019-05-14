@@ -1,0 +1,381 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<ul
+  className="MuiGridList-root-1"
+  style={
+    Object {
+      "margin": -2,
+      "position": "absolute",
+      "top": "75px",
+    }
+  }
+>
+  <li
+    className="MuiGridListTile-root-2"
+    style={
+      Object {
+        "height": 504,
+        "padding": 2,
+        "width": "33.333333333333336%",
+      }
+    }
+  >
+    <div
+      className="MuiGridListTile-tile-3"
+    >
+      <div
+        className="MuiPaper-root-10 MuiPaper-elevation1-13 MuiPaper-rounded-11 MuiCard-root-9 Listing-card-6"
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+      >
+        <div
+          className="MuiCardHeader-root-37"
+        >
+          <div
+            className="MuiCardHeader-avatar-38"
+          >
+            <div
+              aria-label="Walkscore"
+              className="MuiAvatar-root-43 MuiAvatar-colorDefault-44"
+              style={
+                Object {
+                  "backgroundColor": "#2196f3",
+                }
+              }
+            >
+              70
+            </div>
+          </div>
+          <div
+            className="MuiCardHeader-content-40"
+          >
+            <span
+              className="MuiTypography-root-46 MuiTypography-body2-54 MuiCardHeader-title-41"
+            >
+              Cozy Craftsman Bungalow near City Center
+            </span>
+            <span
+              className="MuiTypography-root-46 MuiTypography-body2-54 MuiTypography-colorTextSecondary-79 MuiCardHeader-subheader-42"
+            >
+              denver
+            </span>
+          </div>
+        </div>
+        <a
+          href="https://www.airbnb.com/rooms/13815789"
+          target="_blank"
+        >
+          <div
+            className="MuiCardMedia-root-82 Listing-media-7"
+            style={
+              Object {
+                "backgroundImage": "url(\\"https://a0.muscache.com/im/pictures/7ca1d55d-9f8a-47f1-9819-b4970df3825e.jpg\\")",
+              }
+            }
+            title="Listing Image"
+          />
+        </a>
+        <div
+          className="MuiCardContent-root-84"
+          style={
+            Object {
+              "backgroundColor": "#2196f3",
+            }
+          }
+        >
+          <div
+            className="MuiGrid-container-85 MuiGrid-justify-xs-space-evenly-106"
+          >
+            <div
+              className="MuiGrid-item-86"
+            >
+              <div
+                className="MuiTypography-root-46 MuiTypography-subtitle2-65"
+                style={
+                  Object {
+                    "color": "white",
+                  }
+                }
+              >
+                6 guests
+              </div>
+            </div>
+            <div
+              className="MuiGrid-item-86"
+            >
+              <div
+                className="MuiTypography-root-46 MuiTypography-subtitle2-65"
+                style={
+                  Object {
+                    "color": "white",
+                  }
+                }
+              >
+                3 bedrooms
+              </div>
+            </div>
+            <div
+              className="MuiGrid-item-86"
+            >
+              <div
+                className="MuiTypography-root-46 MuiTypography-subtitle2-65"
+                style={
+                  Object {
+                    "color": "white",
+                  }
+                }
+              >
+                5 beds
+              </div>
+            </div>
+            <div
+              className="MuiGrid-item-86"
+            >
+              <div
+                className="MuiTypography-root-46 MuiTypography-subtitle2-65"
+                style={
+                  Object {
+                    "color": "white",
+                  }
+                }
+              >
+                1 bath
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="MuiCardContent-root-84"
+          style={
+            Object {
+              "backgroundColor": "#F8F8F8",
+              "paddingBottom": "16px",
+            }
+          }
+        >
+          <div
+            className="MuiGrid-container-85 MuiGrid-justify-xs-space-evenly-106"
+          >
+            <div
+              className="MuiGrid-item-86"
+            >
+              <div
+                className="MuiTypography-root-46 MuiTypography-subtitle2-65"
+              >
+                $
+                59
+                /night
+              </div>
+            </div>
+            <div
+              className="MuiGrid-item-86"
+            >
+              <div
+                className="MuiTypography-root-46 MuiTypography-subtitle2-65"
+              >
+                Rating: 
+                5
+                /5
+              </div>
+            </div>
+            <div
+              className="MuiGrid-item-86"
+            >
+              <div
+                className="MuiTypography-root-46 MuiTypography-subtitle2-65"
+              >
+                272
+                 reviews
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+  <li
+    className="MuiGridListTile-root-2"
+    style={
+      Object {
+        "height": 504,
+        "padding": 2,
+        "width": "33.333333333333336%",
+      }
+    }
+  >
+    <div
+      className="MuiGridListTile-tile-3"
+    >
+      <div
+        className="MuiPaper-root-10 MuiPaper-elevation1-13 MuiPaper-rounded-11 MuiCard-root-9 Listing-card-6"
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+      >
+        <div
+          className="MuiCardHeader-root-37"
+        >
+          <div
+            className="MuiCardHeader-avatar-38"
+          >
+            <div
+              aria-label="Walkscore"
+              className="MuiAvatar-root-43 MuiAvatar-colorDefault-44"
+              style={
+                Object {
+                  "backgroundColor": "#2196f3",
+                }
+              }
+            >
+              68
+            </div>
+          </div>
+          <div
+            className="MuiCardHeader-content-40"
+          >
+            <span
+              className="MuiTypography-root-46 MuiTypography-body2-54 MuiCardHeader-title-41"
+            >
+              Private room, private bathroom and great backyard!
+            </span>
+            <span
+              className="MuiTypography-root-46 MuiTypography-body2-54 MuiTypography-colorTextSecondary-79 MuiCardHeader-subheader-42"
+            >
+              denver
+            </span>
+          </div>
+        </div>
+        <a
+          href="https://www.airbnb.com/rooms/6883917"
+          target="_blank"
+        >
+          <div
+            className="MuiCardMedia-root-82 Listing-media-7"
+            style={
+              Object {
+                "backgroundImage": "url(\\"https://a0.muscache.com/im/pictures/87153622/85341615_original.jpg\\")",
+              }
+            }
+            title="Listing Image"
+          />
+        </a>
+        <div
+          className="MuiCardContent-root-84"
+          style={
+            Object {
+              "backgroundColor": "#2196f3",
+            }
+          }
+        >
+          <div
+            className="MuiGrid-container-85 MuiGrid-justify-xs-space-evenly-106"
+          >
+            <div
+              className="MuiGrid-item-86"
+            >
+              <div
+                className="MuiTypography-root-46 MuiTypography-subtitle2-65"
+                style={
+                  Object {
+                    "color": "white",
+                  }
+                }
+              >
+                2 guests
+              </div>
+            </div>
+            <div
+              className="MuiGrid-item-86"
+            >
+              <div
+                className="MuiTypography-root-46 MuiTypography-subtitle2-65"
+                style={
+                  Object {
+                    "color": "white",
+                  }
+                }
+              >
+                1 bedroom
+              </div>
+            </div>
+            <div
+              className="MuiGrid-item-86"
+            >
+              <div
+                className="MuiTypography-root-46 MuiTypography-subtitle2-65"
+                style={
+                  Object {
+                    "color": "white",
+                  }
+                }
+              >
+                1 bed
+              </div>
+            </div>
+            <div
+              className="MuiGrid-item-86"
+            >
+              <div
+                className="MuiTypography-root-46 MuiTypography-subtitle2-65"
+                style={
+                  Object {
+                    "color": "white",
+                  }
+                }
+              >
+                1 private bath
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="MuiCardContent-root-84"
+          style={
+            Object {
+              "backgroundColor": "#F8F8F8",
+              "paddingBottom": "16px",
+            }
+          }
+        >
+          <div
+            className="MuiGrid-container-85 MuiGrid-justify-xs-space-evenly-106"
+          >
+            <div
+              className="MuiGrid-item-86"
+            >
+              <div
+                className="MuiTypography-root-46 MuiTypography-subtitle2-65"
+              >
+                $
+                43
+                /night
+              </div>
+            </div>
+            <div
+              className="MuiGrid-item-86"
+            >
+              <div
+                className="MuiTypography-root-46 MuiTypography-subtitle2-65"
+              >
+                Rating: 
+                5
+                /5
+              </div>
+            </div>
+            <div
+              className="MuiGrid-item-86"
+            >
+              <div
+                className="MuiTypography-root-46 MuiTypography-subtitle2-65"
+              >
+                239
+                 reviews
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
+`;

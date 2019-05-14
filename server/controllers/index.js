@@ -17,5 +17,3 @@ exports.getListings = async (city) => {
   });
   return listings.sort()
 };
-
-exports.getCities();
