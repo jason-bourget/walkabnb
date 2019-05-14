@@ -2,7 +2,6 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import blue from '@material-ui/core/colors/blue';
 import AutoSuggest from './AutoSuggest.jsx';
@@ -36,16 +35,6 @@ const styles = theme => ({
 });
 
 class Title extends React.Component {
-  constructor(props) {
-    super(props);
-      this.state = {
-        city: ''
-      }
-  }
-
-  handleChange = (event) => {
-    this.setState({city: event.target.value})
-  };
 
   render() {
     const { classes } = this.props;

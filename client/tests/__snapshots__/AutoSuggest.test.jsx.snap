@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="AutoSuggest-root-1"
+>
+  <div
+    aria-expanded={false}
+    aria-haspopup="listbox"
+    aria-owns="react-autowhatever-1"
+    className="AutoSuggest-container-2"
+    role="combobox"
+  >
+    <div
+      aria-activedescendant={null}
+      aria-autocomplete="list"
+      aria-controls="react-autowhatever-1"
+      className="MuiFormControl-root-7 MuiFormControl-fullWidth-10"
+      onKeyDown={[Function]}
+      style={Object {}}
+    >
+      <div
+        className="MuiInputBase-root-24 MuiOutlinedInput-root-11 MuiInputBase-fullWidth-33 MuiInputBase-formControl-25"
+        onClick={[Function]}
+        style={
+          Object {
+            "borderTopColor": "white",
+            "color": "white",
+          }
+        }
+      >
+        <fieldset
+          aria-hidden={true}
+          className="MuiPrivateNotchedOutline-root-41 MuiOutlinedInput-notchedOutline-18"
+          style={
+            Object {
+              "paddingLeft": 8,
+            }
+          }
+        >
+          <legend
+            className="MuiPrivateNotchedOutline-legend-42"
+            style={
+              Object {
+                "width": 0.01,
+              }
+            }
+          >
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "&#8203;",
+                }
+              }
+            />
+          </legend>
+        </fieldset>
+        <input
+          aria-invalid={false}
+          autoComplete="off"
+          className="MuiInputBase-input-34 MuiOutlinedInput-input-19"
+          disabled={false}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Search for a city..."
+          required={false}
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="MuiPaper-root-43 MuiPaper-elevation2-47"
+      id="react-autowhatever-1"
+      role="listbox"
+      style={Object {}}
+    />
+  </div>
+  <button
+    className="MuiButtonBase-root-96 MuiButton-root-70 MuiButton-contained-81 MuiButton-raised-84 AutoSuggest-button-6"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onContextMenu={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex="0"
+    type="button"
+  >
+    <span
+      className="MuiButton-label-71"
+    >
+      Search
+    </span>
+    <span
+      className="MuiTouchRipple-root-99"
+    />
+  </button>
+</div>
+`;

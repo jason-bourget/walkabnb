@@ -1,0 +1,172 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="MuiPaper-root-5 MuiPaper-elevation1-8 MuiPaper-rounded-6 MuiCard-root-4 Listing-card-1"
+  onMouseLeave={[Function]}
+  onMouseOver={[Function]}
+>
+  <div
+    className="MuiCardHeader-root-32"
+  >
+    <div
+      className="MuiCardHeader-avatar-33"
+    >
+      <div
+        aria-label="Walkscore"
+        className="MuiAvatar-root-38 MuiAvatar-colorDefault-39"
+        style={
+          Object {
+            "backgroundColor": "#2196f3",
+          }
+        }
+      >
+        70
+      </div>
+    </div>
+    <div
+      className="MuiCardHeader-content-35"
+    >
+      <span
+        className="MuiTypography-root-41 MuiTypography-body2-49 MuiCardHeader-title-36"
+      >
+        Cozy Craftsman Bungalow near City Center
+      </span>
+      <span
+        className="MuiTypography-root-41 MuiTypography-body2-49 MuiTypography-colorTextSecondary-74 MuiCardHeader-subheader-37"
+      >
+        denver
+      </span>
+    </div>
+  </div>
+  <a
+    href="https://www.airbnb.com/rooms/13815789"
+    target="_blank"
+  >
+    <div
+      className="MuiCardMedia-root-77 Listing-media-2"
+      style={
+        Object {
+          "backgroundImage": "url(\\"https://a0.muscache.com/im/pictures/7ca1d55d-9f8a-47f1-9819-b4970df3825e.jpg\\")",
+        }
+      }
+      title="Listing Image"
+    />
+  </a>
+  <div
+    className="MuiCardContent-root-79"
+    style={
+      Object {
+        "backgroundColor": "#2196f3",
+      }
+    }
+  >
+    <div
+      className="MuiGrid-container-80 MuiGrid-justify-xs-space-evenly-101"
+    >
+      <div
+        className="MuiGrid-item-81"
+      >
+        <div
+          className="MuiTypography-root-41 MuiTypography-subtitle2-60"
+          style={
+            Object {
+              "color": "white",
+            }
+          }
+        >
+          6 guests
+        </div>
+      </div>
+      <div
+        className="MuiGrid-item-81"
+      >
+        <div
+          className="MuiTypography-root-41 MuiTypography-subtitle2-60"
+          style={
+            Object {
+              "color": "white",
+            }
+          }
+        >
+          3 bedrooms
+        </div>
+      </div>
+      <div
+        className="MuiGrid-item-81"
+      >
+        <div
+          className="MuiTypography-root-41 MuiTypography-subtitle2-60"
+          style={
+            Object {
+              "color": "white",
+            }
+          }
+        >
+          5 beds
+        </div>
+      </div>
+      <div
+        className="MuiGrid-item-81"
+      >
+        <div
+          className="MuiTypography-root-41 MuiTypography-subtitle2-60"
+          style={
+            Object {
+              "color": "white",
+            }
+          }
+        >
+          1 bath
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiCardContent-root-79"
+    style={
+      Object {
+        "backgroundColor": "#F8F8F8",
+        "paddingBottom": "16px",
+      }
+    }
+  >
+    <div
+      className="MuiGrid-container-80 MuiGrid-justify-xs-space-evenly-101"
+    >
+      <div
+        className="MuiGrid-item-81"
+      >
+        <div
+          className="MuiTypography-root-41 MuiTypography-subtitle2-60"
+        >
+          $
+          59
+          /night
+        </div>
+      </div>
+      <div
+        className="MuiGrid-item-81"
+      >
+        <div
+          className="MuiTypography-root-41 MuiTypography-subtitle2-60"
+        >
+          Rating: 
+          5
+          /5
+        </div>
+      </div>
+      <div
+        className="MuiGrid-item-81"
+      >
+        <div
+          className="MuiTypography-root-41 MuiTypography-subtitle2-60"
+        >
+          272
+           reviews
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

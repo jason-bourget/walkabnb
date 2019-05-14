@@ -114,8 +114,6 @@ class AutoSuggest extends React.Component {
     const inputLength = inputValue.length;
     let count = 0;
 
-    console.log(this.props.cities);
-
     return inputLength === 0
       ? []
       : this.props.cities.filter(city => {
