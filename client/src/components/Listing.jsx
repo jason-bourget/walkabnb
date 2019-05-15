@@ -19,9 +19,6 @@ const styles = theme => ({
   media: {
     height: 0,
     paddingTop: '56.25%',
-  },
-  actions: {
-    display: 'flex',
   }
 });
 
@@ -45,14 +42,16 @@ class Listing extends React.Component {
   handleExpandClick = () => {
     this.setState(state => ({ expanded: !state.expanded }));
   }
-
+  /* Generates a color along a blue/red spectrum:
+  dark blue for good walkscores, dark red for bad walkscores. */
   generateColor = (walkscore) => {
     if (walkscore > 50) {
       const shade = Math.round((((walkscore - 50) / 50 * 700) + 200 ) / 100) * 100;
       return blue[shade];
     }
     const shade = Math.round((900 - (walkscore / 50 * 700 )) / 100) * 100;
-    return red[shade]; }
+    return red[shade];
+  }
 
   render() {
     const { classes } = this.props;

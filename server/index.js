@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('custom-env').env(true)
 const port = process.env.PORT || 3000;
 const express = require('express');
 const bodyParser = require('body-parser');

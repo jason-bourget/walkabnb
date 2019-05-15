@@ -6,14 +6,24 @@ exports.createOrUpdate = async (listing) => {
 };
 
 exports.getCities = async () => {
-  let cities = await Listing.aggregate('city', 'DISTINCT', { plain: false });
-  return cities.map(city => city.DISTINCT);
+  try {
+    let cities = await Listing.aggregate('city', 'DISTINCT', { plain: false });
+    return cities.map(city => city.DISTINCT);
+  }
+  catch(err) {
+    return err;
+  }
 }
 
 exports.getListings = async (city) => {
-  const listings = await Listing.findAll({
-    where: { city },
-    order: sequelize.literal('walkscore DESC')
-  });
-  return listings.sort()
+  try {
+    const listings = await Listing.findAll({
+      where: { city },
+      order: sequelize.literal('walkscore DESC')
+    });
+    return listings.sort()
+  }
+  catch(err) {
+    return err;
+  }
 };
