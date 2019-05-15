@@ -17,6 +17,8 @@ class App extends React.Component {
     this.setState({ listings: data });
   };
 
+  /* Retrieves all the unique cities in our database,
+  which are used to populate our Autosuggest list. */
   getCities = async () => {
     const { data } = await axios.get('/api/cities');
     this.setState({ cities: data });

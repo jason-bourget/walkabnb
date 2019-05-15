@@ -93,11 +93,11 @@ function renderSuggestion(suggestion, { query, isHighlighted }) {
       </div>
     </MenuItem>
   );
-}
+};
 
 function getSuggestionValue(suggestion) {
   return suggestion;
-}
+};
 
 class AutoSuggest extends React.Component {
   constructor(props) {
