@@ -8,7 +8,8 @@
     "start": "NODE_ENV=production nodemon server/index.js",
     "build-dev": "NODE_ENV=development webpack -d --watch",
     "build": "NODE_ENV=production webpack -p",
-    "test": "NODE_ENV=development jest --env=jsdom"
+    "test": "NODE_ENV=development jest --env=jsdom",
+    "seed": "NODE_ENV=production node server/data/seed.js"
   },
   "author": "",
   "license": "ISC",

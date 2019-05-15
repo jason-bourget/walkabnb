@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('custom-env').env(true)
 const axios = require('axios');
 
 const geocodeUrl = "https://maps.googleapis.com/maps/api/geocode/json?";
@@ -6,6 +6,8 @@ const geocodeKey = process.env.GEOCODE_KEY;
 
 const walkscoreUrl = "http://api.walkscore.com/score?format=json";
 const walkscoreKey = process.env.WALKSCORE_KEY;
+
+console.log({ geocodeKey, walkscoreKey })
 
 /* Gets an address from Google's Geocode API
 based on lat and long */

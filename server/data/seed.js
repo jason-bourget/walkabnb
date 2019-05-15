@@ -18,4 +18,4 @@ const seed = async (city) => {
   }
 }
 
-seed('san francisco');
+seed('santa fe');
